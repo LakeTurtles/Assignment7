@@ -23,7 +23,7 @@ public class CustomArrayList<T> implements CustomList<T>{
                 data = doubleArray();
             }
 
-        for (int i = size-1; i>index; i--) {
+        for (int i = size-1; i >= index; i--) {
                 data[i+1] = data[i];
             }
             data[index] = item;
