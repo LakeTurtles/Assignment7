@@ -54,6 +54,7 @@ public class CustomArrayList<T> implements CustomList<T>{
     }
 
     public T remove(int index){
+
         if (index >= size) {
             throw new IndexOutOfBoundsException();
         }
@@ -66,6 +67,21 @@ public class CustomArrayList<T> implements CustomList<T>{
         size--;
         return removedItem;
     }
+
+
+//    Object[] newArray = new Object[data.length - 1];
+
+//        T removedItem = (T) data[index];
+
+//        System.arraycopy(data, 0, newArray, 0, indexToRemove);
+
+//        System.arraycopy(data, indexToRemove + 1, newArray, indexToRemove,
+//        data.length - indexToRemove - 1);
+//
+
+//        return (T) removedItem;
+
+
 
 
 }

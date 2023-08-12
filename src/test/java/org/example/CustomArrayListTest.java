@@ -1,5 +1,6 @@
 package org.example;
 
+import static org.example.ThreadColor.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
@@ -68,12 +69,29 @@ class CustomArrayListTest {
 	
 	@Test
 	void remove_from_middle_of_arraylist() {
+		System.out.println(ANSI_RED + "Removing Index 11     ----v----");
+
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_BLUE +" " + numberList.get(i));
+		}
 		Integer itemRemoved = numberList.remove(11);
-		
+		System.out.println();
 		assertEquals(12, itemRemoved);
 		assertEquals(98, numberList.getSize());
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_CYAN +" " + numberList.get(  i));
+		}
+
+		numberList.remove(11);
+		System.out.println();
+
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_PURPLE +" " + numberList.get(  i));
+		}
+
 		assertEquals(1, numberList.get(0));
 		assertEquals(99, numberList.get(numberList.getSize()-1));
+
 	}
 	
 	@Test
