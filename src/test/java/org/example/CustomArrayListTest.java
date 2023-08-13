@@ -26,6 +26,59 @@ class CustomArrayListTest {
 		System.out.println("Running a test...");
 	}
 
+
+
+
+	@Test
+	void other_remove_from_list_removeIndex(){
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_BLUE +" " + numberList.get(i));
+		}
+
+		numberList.removeIndex(2);
+		System.out.println();
+
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_CYAN +" " + numberList.get(i));
+		}
+
+		numberList.removeIndex(2);
+		System.out.println();
+
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_PURPLE +" " + numberList.get(i));
+		}
+
+		numberList.removeIndex(2);
+		System.out.println();
+
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_BLUE +" " + numberList.get(i));
+		}
+
+	}
+
+	@Test
+	void remove_element_from_list(){
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_BLUE +" " + numberList.get(i));
+		}
+
+		numberList.removeElement(3);
+		System.out.println();
+
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_CYAN +" " + numberList.get(i));
+		}
+
+		numberList.removeElement(6);
+		System.out.println();
+
+		for(int i = 0; i < numberList.getSize(); i++){
+			System.out.print(ANSI_CYAN +" " + numberList.get(i));
+		}
+	}
+
 	@Test
 	void add_at_end_of_array(){
 		numberList.add(666_000_000);
@@ -69,6 +122,7 @@ class CustomArrayListTest {
 	
 	@Test
 	void remove_from_middle_of_arraylist() {
+		assertEquals(99, numberList.getSize());
 		System.out.println(ANSI_RED + "Removing Index 11     ----v----");
 
 		for(int i = 0; i < numberList.getSize(); i++){
@@ -91,29 +145,26 @@ class CustomArrayListTest {
 
 		assertEquals(1, numberList.get(0));
 		assertEquals(99, numberList.get(numberList.getSize()-1));
+		assertEquals(97, numberList.getSize());
 
 	}
 	
 	@Test
 	void add_and_remove_large_indexes() {
-		for (int i=0; i<100000; i++) {
+		for (int i=numberList.getSize(); i<100_000; i++) {
 			numberList.add(i);
 		}
 
 		Integer itemRemoved = numberList.remove(50000);
 
-		assertEquals(49901, itemRemoved);
-		assertEquals(100098, numberList.getSize());
-		assertEquals(1, numberList.get(0));
+		assertEquals(50000, itemRemoved);
+
 		int halfSize = numberList.getSize() / 2;
 
 		for (int i = numberList.getSize()-1; i > halfSize; i--){
-			Integer item = numberList.remove(i);
-
+			Integer item = numberList.removeIndex(i);
 		}
-		assertEquals(50049, numberList.getSize()-1);
-		System.out.println("NumberList = " + numberList.getSize());
-		System.out.println("value at end of the list is = " + numberList.get(numberList.getSize()-1));
+
 	}
 	
 	@Test

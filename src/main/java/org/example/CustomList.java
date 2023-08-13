@@ -14,6 +14,10 @@ T get (int index) throws IndexOutOfBoundsException;
 
 T remove(int index) throws IndexOutOfBoundsException;
 
+T removeIndex(int index) throws IndexOutOfBoundsException;
+
+T removeElement(T value) throws IndexOutOfBoundsException;
+
 
 
 }

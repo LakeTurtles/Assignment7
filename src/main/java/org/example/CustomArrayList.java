@@ -1,5 +1,6 @@
 package org.example;
 
+
 public class CustomArrayList<T> implements CustomList<T>{
     Object[] data = new Object[10];
     Integer size = 0;
@@ -53,12 +54,28 @@ public class CustomArrayList<T> implements CustomList<T>{
         return (T) data[index];
     }
 
-    public T remove(int index){
 
+
+
+    public T remove(int index) {
+        T indexToRemove = (T)data[index];
+        Object[] newArray = new Object[data.length - 1];
+        for (int i = index; i<size-1; i++) {
+                data[i] = data[i+1];
+            }
+            size--;
+            for (int i = 0; i < data.length-1; i++) {
+                newArray[i] = data[i];
+            }
+            data = newArray;
+        return indexToRemove;
+    }
+
+
+    public T removeIndex(int index){
         if (index >= size) {
             throw new IndexOutOfBoundsException();
         }
-
         T removedItem = (T) data[index];
 
         for (int i = index; i<size-1; i++) {
@@ -69,17 +86,36 @@ public class CustomArrayList<T> implements CustomList<T>{
     }
 
 
-//    Object[] newArray = new Object[data.length - 1];
 
-//        T removedItem = (T) data[index];
 
-//        System.arraycopy(data, 0, newArray, 0, indexToRemove);
+    public T removeElement(T value) {
+        T valueToRemove = null;
+        int indexToRemove = -1;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i].equals(value)) {
+                indexToRemove = i;
+                valueToRemove = (T)data[i];
+                break;
+            }
+        }
 
-//        System.arraycopy(data, indexToRemove + 1, newArray, indexToRemove,
-//        data.length - indexToRemove - 1);
-//
+        Object[] newArray = new Object[data.length - 1];
 
-//        return (T) removedItem;
+        for (int i = indexToRemove; i<size-1; i++) {
+            data[i] = data[i+1];
+        }
+        size--;
+
+        for (int i = 0; i < data.length-1; i++) {
+            newArray[i] = data[i];
+        }
+
+        data = newArray;
+
+
+        return valueToRemove;
+    }
+
 
 
 
