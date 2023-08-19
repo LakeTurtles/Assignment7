@@ -56,19 +56,18 @@ public class CustomArrayList<T> implements CustomList<T>{
 
 
 
-
-    public T remove(int index) {
-        T indexToRemove = (T)data[index];
-        Object[] newArray = new Object[data.length - 1];
-        for (int i = index; i<size-1; i++) {
-                data[i] = data[i+1];
+    @Override
+    public T remove(int index) throws IndexOutOfBoundsException{
+        T removedValue = (T)this.data[index];
+        for(int i = index; i < size; i++){
+            if(i == size - 1){
+                this.data[i] = null;
+                size--;
+                return removedValue;
             }
-            size--;
-            for (int i = 0; i < data.length-1; i++) {
-                newArray[i] = data[i];
-            }
-            data = newArray;
-        return indexToRemove;
+            this.data[i] = this.data[i + 1];
+        }
+        return null;
     }
 
 
@@ -84,7 +83,6 @@ public class CustomArrayList<T> implements CustomList<T>{
         size--;
         return removedItem;
     }
-
 
 
 

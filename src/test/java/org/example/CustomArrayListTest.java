@@ -30,19 +30,20 @@ class CustomArrayListTest {
 
 
 	@Test
-	void other_remove_from_list_removeIndex(){
+	void remove_from_list_removeIndex(){
 		for(int i = 0; i < numberList.getSize(); i++){
 			System.out.print(ANSI_BLUE +" " + numberList.get(i));
 		}
 
-		numberList.removeIndex(2);
+		numberList.remove(2);
+		numberList.add(2 , 3);
 		System.out.println();
 
 		for(int i = 0; i < numberList.getSize(); i++){
 			System.out.print(ANSI_CYAN +" " + numberList.get(i));
 		}
 
-		numberList.removeIndex(2);
+		numberList.remove(2);
 		System.out.println();
 
 		for(int i = 0; i < numberList.getSize(); i++){
